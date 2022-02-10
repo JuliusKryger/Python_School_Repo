@@ -9,6 +9,9 @@ months = {'JAN' : '1', 'FEB' : '2', 'MAR' : '3', 'APR' : '4', 'MAY' : '5', 'JUN'
 
 user_input = input("Enter a date in the format 'dd-MMM-yy' ex. '8-MAR-85': ")           # Takes user input and then saves it to our variable.
 try:
-    print('-'.join([months.get(i, i) for i in user_input.split('-')]))
+    print('-'.join([months.get(i, i) for i in user_input.split('-')]))                  # It takes the string and splits it then it checks if there is a match with any of the keys in the dictionary, 
+                                                                                        # and if there is, then it sets the value of that key and joins the string back toghether.
 except ValueError:
-    print("Error: must be in 'dd-MMM-yy' format. ")
+    print("Error: must be in 'dd-MMM-yy' format. ")                                     # Was hoping to do some error handling, but i can't seems to understand how it works right now.
+                                                                                        # Problem is it never fails, even if i put in wrong formart, as it is just a string, so if there is nothing to change,
+                                                                                        # then it just returns the original input string.
