@@ -52,6 +52,6 @@ def read_csv(file):
     return content
 
 #   Function Calls Below Here!
-print_file_content('ERROR')
+#print_file_content('ERROR')
 #write_strings_to_file(file, string1, string2, string3)
-#read_csv(file)
+print(read_csv(file))
