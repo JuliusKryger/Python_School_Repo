@@ -40,7 +40,7 @@ class TextContainer () :
         ascii_count = sum(c in string.ascii_letters for c in user_text)
         print("Total number of characters:", total_count)
         print("Total number of ASCII characters:", ascii_count)
-        print("Total number of non-ASCII characters:", total_count-ascii_count)
+        print("Total number of all punctuation characters:", total_count-ascii_count)
         
 
 string.ascii_letters  # returns 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
