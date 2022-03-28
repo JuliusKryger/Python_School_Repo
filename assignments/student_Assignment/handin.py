@@ -1,4 +1,6 @@
 #   The Datasheet used for this assignment can be downloaded from the following site -> https://www.kaggle.com/sanjeetsinghnaik/top-1000-highest-grossing-movies
+from os import sep
+from unittest import result
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -25,11 +27,30 @@ print('\n----------   Task 3  ---------- \n \n Percent of PG rated movies betwee
 #   First Thought! -> Here we need to get license and release date into a dataframe then we have to split month and date away from year so we can filter based on those specific year range, after that we need to calculate the percentage.
 df1 = pd.DataFrame(data, columns = ['License','Release Date'])                                          #   Creating our dataFrame and selecting the only two collums we need.
 df1[['Release Date', 'Year']] = df1['Release Date'].str.split(',', 1, expand=True)                      #   Here we strip month and date from year on the comma.
-df1_filter = df1[(df1['Year'] >= " 2001") & (df1['Year'] < " 2015")]                                    #   Sorts our dataframe to only include data in a specific year range.
+df1_filter = df1[(df1['Year'] >= ' 2001') & (df1['Year'] < ' 2015')]                                    #   Sorts our dataframe to only include data in a specific year range.
 df1 = df1_filter['License'].value_counts(normalize=True).mul(100).round(1).astype(str) + '%'            #   Counts all the different licenses and convert that into percentage.
 print('PG = ' + df1.iloc[1])                                                                            #   Here we print the result and make sure we only print PG percentage.
 
-#   Taks 4. Calculate the average of world sales for each genre and visualize the data with a bar chart. (Hint: use groupBy)
+#   Taks 4. Calculate the average of world sales for each genre and visualize the data with a bar chart.
 print('\n----------   Task 4  ---------- \n \n testing \n')
 
 #   First Thought! -> 
+result = {}
+df2 = pd.DataFrame(data, columns = ['World Sales (in $)', 'Genre'])
+df3 = (df2['Genre'].str.split("'", expand=True)
+                         .replace(',', '')
+                         .apply(pd.value_counts, axis=1)
+                         .fillna(0)  
+                         .astype(int))
+
+y = df3[df3.columns[1:22]].copy()
+y1 = y.sum().to_dict()
+z = y.mul(df2["World Sales (in $)"], axis=0)
+x = z.sum().to_dict()
+for (i, v), (i2, v2) in zip(
+    y1.items(), x.items()
+    ):
+    avg = v2 / v
+    result[i] = avg
+
+print(result)
