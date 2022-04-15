@@ -1,9 +1,5 @@
 #   The Datasheet used for this assignment can be downloaded from the following site -> https://www.kaggle.com/sanjeetsinghnaik/top-1000-highest-grossing-movies
-from os import sep
-from unittest import result
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 
 #   Taks 1. Find the top 10 highest grossing Disney movies measured by world sales.
 print('\n----------   Task 1  ---------- \n \n Top 10 Disney movies World Sales in Dollars \n')
